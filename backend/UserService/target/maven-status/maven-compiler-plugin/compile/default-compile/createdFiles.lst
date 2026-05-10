@@ -1,0 +1,13 @@
+com\casestudy\userservice\controller\NotificationController.class
+com\casestudy\userservice\entity\User.class
+com\casestudy\userservice\repository\NotificationRepository.class
+com\casestudy\userservice\controller\UserController.class
+com\casestudy\userservice\controller\ChatbotController.class
+com\casestudy\userservice\entity\User$Role.class
+com\casestudy\userservice\UserServiceApplication.class
+com\casestudy\userservice\controller\AuthController.class
+com\casestudy\userservice\entity\Notification.class
+com\casestudy\userservice\repository\UserRepository.class
+com\casestudy\userservice\service\UserService.class
+com\casestudy\userservice\config\JwtUtil.class
+com\casestudy\userservice\config\SecurityConfig.class

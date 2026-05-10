@@ -1,0 +1,8 @@
+com\casestudy\taskservice\config\SecurityConfig.class
+com\casestudy\taskservice\config\UserServiceClient.class
+com\casestudy\taskservice\repository\TaskRepository.class
+com\casestudy\taskservice\service\TaskService.class
+com\casestudy\taskservice\TaskServiceApplication.class
+com\casestudy\taskservice\controller\TaskController.class
+com\casestudy\taskservice\entity\Task.class
+com\casestudy\taskservice\entity\Task$TaskStatus.class

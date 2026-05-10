@@ -1,0 +1,112 @@
+version: "3.9"
+
+services:
+
+  # ----------------------------
+  # MySQL
+  # ----------------------------
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Sultanpur@123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - microservice-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ----------------------------
+  # Eureka Server
+  # ----------------------------
+  eureka-server:
+    build:
+      context: ./backend/EurekaServer
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - microservice-network
+
+  # ----------------------------
+  # User Service
+  # ----------------------------
+  user-service:
+    build:
+      context: ./backend/UserService
+    container_name: user-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      DB_HOST: mysql
+      DB_NAME: caseStudyWithGenAIUser
+      DB_USERNAME: root
+      DB_PASSWORD: Sultanpur@123
+      EUREKA_URL: http://eureka-server:8761/eureka/
+    networks:
+      - microservice-network
+
+  # ----------------------------
+  # Task Service
+  # ----------------------------
+  task-service:
+    build:
+      context: ./backend/TaskService
+    container_name: task-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      DB_HOST: mysql
+      DB_NAME: caseStudyWithGenAITask
+      DB_USERNAME: root
+      DB_PASSWORD: Sultanpur@123
+      EUREKA_URL: http://eureka-server:8761/eureka/
+    networks:
+      - microservice-network
+
+  # ----------------------------
+  # Task Submission Service
+  # ----------------------------
+  task-submission-service:
+    build:
+      context: ./backend/TaskSubmissionService
+    container_name: task-submission-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      DB_HOST: mysql
+      DB_NAME: caseStudyWithGenAITaskSubmission
+      DB_USERNAME: root
+      DB_PASSWORD: Sultanpur@123
+      EUREKA_URL: http://eureka-server:8761/eureka/
+    networks:
+      - microservice-network
+
+networks:
+  microservice-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

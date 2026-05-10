@@ -1,0 +1,8 @@
+com\casestudy\submissionservice\controller\SubmissionController.class
+com\casestudy\submissionservice\TaskSubmissionServiceApplication.class
+com\casestudy\submissionservice\config\SecurityConfig.class
+com\casestudy\submissionservice\service\SubmissionService.class
+com\casestudy\submissionservice\entity\Submission.class
+com\casestudy\submissionservice\repository\SubmissionRepository.class
+com\casestudy\submissionservice\entity\Submission$SubmissionStatus.class
+com\casestudy\submissionservice\client\NotificationClient.class
