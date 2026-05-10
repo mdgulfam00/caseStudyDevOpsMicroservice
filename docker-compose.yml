@@ -104,6 +104,22 @@ services:
     networks:
       - microservice-network
 
+  # ----------------------------
+  # Frontend React App
+  # ----------------------------
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - user-service
+      - task-service
+      - task-submission-service
+    networks:
+      - microservice-network
+
 networks:
   microservice-network:
     driver: bridge
