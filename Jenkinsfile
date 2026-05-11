@@ -39,7 +39,7 @@ pipeline {
         stage('Build All Microservices') {
             steps {
                 sh '''
-                    docker-compose build --no-cache
+                    docker-compose build
                 '''
             }
         }
