@@ -8,7 +8,7 @@ services:
   mysql:
     image: mysql:8.0
     container_name: mysql
-    restart: always
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: Sultanpur@123
     ports:
@@ -30,6 +30,7 @@ services:
     build:
       context: ./backend/EurekaServer
     container_name: eureka-server
+    restart: unless-stopped
     ports:
       - "8761:8761"
     networks:
@@ -114,6 +115,7 @@ services:
     build:
       context: ./frontend
     container_name: frontend
+    restart: unless-stopped
     ports:
       - "3000:80"
     depends_on:
