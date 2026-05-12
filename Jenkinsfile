@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        COMPOSE_PROJECT_NAME = "project-manager-ci-cd"
+        COMPOSE_PROJECT_NAME = "mycasestudywithgenai"
     }
 
     stages {
