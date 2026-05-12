@@ -212,7 +212,7 @@ const Login = () => {
             color: '#666',
             fontSize: '1rem'
           }}>
-            {isLogin ? "Don't have an account?" : "Already have an account?"}
+            {isLogin ? "Don't have an account? No problem" : "Already have an account?"}
           </p>
           <button 
             type="button" 
